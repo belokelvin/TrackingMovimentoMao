@@ -32,6 +32,8 @@ A captura de vídeo da webcam é iniciada e um loop é executado para processar 
 
 Além disso, o código rastreia o movimento do dedo indicador (índice 8) e desenha linhas para acompanhar seu movimento na imagem.
 
+![Demonstração do funcionamento do codigo em tempo real](https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbzVyY3gwNzdxamtxcGxhdWRkeTV3MW11b24yNDZtNG95OW5scmcyNiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/HMzPs8IcM7rVvhDpiH/giphy.gif)
+
 O programa é encerrado ao pressionar a tecla "Esc".
 
 ## Contribuição
