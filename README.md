@@ -17,7 +17,7 @@ pip install numpy opencv-python mediapipe
 Após a instalação das bibliotecas, você pode executar o código da seguinte maneira:
 
 ```bash
-python nome_do_arquivo.py
+python TrackingMovimentoMao.py
 ```
 
 Isso iniciará o programa e abrirá uma janela que exibirá o vídeo da webcam em tempo real com as landmarks das mãos e o rastreamento do dedo indicador.
