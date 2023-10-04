@@ -4,7 +4,7 @@ import numpy as np
 import cv2
 from collections import deque
 import mediapipe as mp
-from utils.utils_v2 import get_idx_to_coordinates, rescale_frame
+from utils.utils import get_idx_to_coordinates, rescale_frame
 
 mp_drawing = mp.solutions.drawing_utils
 mp_hands = mp.solutions.hands
@@ -16,13 +16,13 @@ def main():
     
     #objeto Hands é criado com configurações específicas, incluindo limites de confiança para detecção e rastreamento de mãos.
     hand_landmark_drawing_spec = mp_drawing.DrawingSpec(thickness=5, circle_radius=5)
+    #objetos DrawingSpec especificam como as landmarks das mãos e as conexões entre elas devem ser desenhadas no vídeo.
     hand_connection_drawing_spec = mp_drawing.DrawingSpec(thickness=10, circle_radius=10)
     
-    #objetos DrawingSpec especificam como as landmarks das mãos e as conexões entre elas devem ser desenhadas no vídeo.
-    cap = cv2.VideoCapture(0)
+    #captura de vídeo da webcam (câmera número 0)
+    cap = cv2.VideoCapture(2)
     pts = deque(maxlen=64)
     
-    #captura de vídeo da webcam (câmera número 0) 
     while cap.isOpened():
         idx_to_coordinates = {} #armazenar as coordenadas das landmarks das mãos.
         ret, image = cap.read() # imagem é capturada a partir da webcam.
@@ -63,10 +63,10 @@ def main():
             cv2.line(image, pts[i - 1], pts[i], (0, 255, 0), thick)
         
         #A imagem é redimensionada e exibida em uma janela chamada "Res".
-        cv2.imshow("Res", rescale_frame(image, percent=130))
+        cv2.imshow("Res", rescale_frame(image, percent=30))
         
-        #A aplicação aguarda uma tecla ser pressionada e encerra o loop se a tecla Esc
-        if cv2.waitKey(5) & 0xFF == 27:
+        #Altere o valor abaixo para controlar a quantidade de frames por exibição
+        if cv2.waitKey(60) & 0xFF == 40:  # Por exemplo, 30 milissegundos por frame
             break
     hands.close()
     cap.release()
